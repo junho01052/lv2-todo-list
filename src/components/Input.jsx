@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/modules/reducers";
 
 
-const Input = ({todo, setTodo}) => {
+const Input = () => {
 
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")    
 
-    const data = useSelector((state) => {
-        return state;
-    })
-    console.log(data)
+    const dispatch = useDispatch();    
 
     const onChangeTitle = (e) => {
         setTitle(e.target.value)
@@ -28,18 +26,19 @@ const Input = ({todo, setTodo}) => {
             body,
             isDone : false
         }
-
-        setTodo([...todo,newObj])       
-
+        dispatch(addItem(newObj))   
+        setTitle("")
+        setBody("")
     }
 
     return (
         <>
-            <input type="text" value={title} onChange={onChangeTitle}></input>
-            <input type="text" value={body} onChange={onChangeBody}></input>
-            <button onClick={addTodo}>추가하기</button>
-        </>
+            <input type="text" value={title} placeholder='제목을 입력해주세요'
+            onChange={onChangeTitle}></input>
+            <input type="text" value={body} placeholder='내용을 입력해주세요' onChange={onChangeBody}></input>
+            <button onClick={addTodo}>추가하기</button> 
+        </>         
     );
-}
- 
+} 
+
 export default Input;

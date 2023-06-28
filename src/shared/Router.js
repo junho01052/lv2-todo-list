@@ -5,7 +5,7 @@ import TodoListDetail from "../pages/TodoListDetail";
 const Router = () => {
     return (
         <BrowserRouter>
-            <Routes>
+            <Routes>              
                 <Route path="/" element={<Home />} />
                 <Route path="/:id" element={<TodoListDetail />} />
             </Routes>

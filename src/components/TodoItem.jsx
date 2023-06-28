@@ -1,19 +1,18 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteItem, updateItem } from "../redux/modules/reducers";
 
-const TodoItem = ({ e, todo, setTodo }) => {
+
+const TodoItem = ({ e }) => {
   const deleteTodo = (id) => {
-    const deleteItem = todo.filter((item) => item.id !== id);
-    setTodo(deleteItem);
-  };
+    dispatch(deleteItem(id))
+  }
+    
+const dispatch = useDispatch()
+
   const isDoneHandler = (id) => {
-    setTodo(
-      todo.map((item) => {
-        if (item.id === id) {
-          return { ...item, isDone: !item.isDone };
-        }
-        return item;
-      })
-    );
+      dispatch(updateItem(id))
+   
   };
   return (
     <>

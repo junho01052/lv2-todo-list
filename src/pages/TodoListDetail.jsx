@@ -1,13 +1,18 @@
 import { useParams } from "react-router-dom";
-import todoData from '../data/TodoData';
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
+
 
 const TodoListDetail = () => {
     const { id } = useParams()
 
     const navigate = useNavigate()
 
-    const foundData = todoData.find((item) => {
+    const data = useSelector((state) => {
+        return state.reducers
+    })
+
+    const foundData = data.find((item) => {
         return item.id === parseInt(id)
     })
 
