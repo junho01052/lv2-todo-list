@@ -1,45 +1,91 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useSelector } from "react-redux";
+import { useDispatch } from 'react-redux';
+import { styled } from 'styled-components';
+import { Add } from '../redux/modules/addItem';
 
+const Input = () => {
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
 
-const Input = ({todo, setTodo}) => {
+  const dispatch = useDispatch();
 
-    const [title, setTitle] = useState("")
-    const [body, setBody] = useState("")    
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+  };
 
-    const data = useSelector((state) => {
-        return state;
-    })
-    console.log(data)
+  const onChangeBody = (e) => {
+    setBody(e.target.value);
+  };
 
-    const onChangeTitle = (e) => {
-        setTitle(e.target.value)
-    }
+  const addTodo = (e) => {
+    e.preventDefault();
+    const newObj = {
+      id: uuidv4(),
+      title,
+      body,
+      isDone: false,
+    };
+    dispatch(Add(newObj));
+    setTitle('');
+    setBody('');
+  };
 
-    const onChangeBody = (e) => {
-        setBody(e.target.value)
-    }
+  return (
+    <>
+      <WrapFrom onSubmit={addTodo}>
+        <WrapIn>
+          <label htmlFor="">제목</label>
+          <INPUT
+            type="text"
+            value={title}
+            required
+            onChange={onChangeTitle}
+          ></INPUT>
+          <label htmlFor="">내용</label>
+          <INPUT
+            type="text"
+            value={body}
+            required
+            onChange={onChangeBody}
+          ></INPUT>
+        </WrapIn>
+        <Btn type="submit">추가하기</Btn>
+      </WrapFrom>
+    </>
+  );
+};
 
-    const addTodo = () => {
-        const newObj = {
-            id: uuidv4(),
-            title,
-            body,
-            isDone : false
-        }
-
-        setTodo([...todo,newObj])       
-
-    }
-
-    return (
-        <>
-            <input type="text" value={title} onChange={onChangeTitle}></input>
-            <input type="text" value={body} onChange={onChangeBody}></input>
-            <button onClick={addTodo}>추가하기</button>
-        </>
-    );
-}
- 
 export default Input;
+
+const WrapFrom = styled.form`
+  background-color: #eee;
+  padding: 30px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+`;
+const WrapIn = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const INPUT = styled.input`
+  height: 40px;
+  width: 240px;
+  border: none;
+  border-radius: 12px;
+  padding: 0px 12px;
+`;
+const Btn = styled.button`
+  border: none;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: teal;
+  width: 140px;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+`;
