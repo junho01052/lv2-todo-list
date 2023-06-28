@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from "react-redux";
 
 
 const Input = ({todo, setTodo}) => {
 
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")    
+
+    const data = useSelector((state) => {
+        return state;
+    })
+    console.log(data)
 
     const onChangeTitle = (e) => {
         setTitle(e.target.value)
