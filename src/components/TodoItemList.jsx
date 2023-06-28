@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 
 const TodoItemList = () => {
   const data = useSelector((state) => {
-    return state.addItem;
+    return state.reducers;
   });
 
   return (

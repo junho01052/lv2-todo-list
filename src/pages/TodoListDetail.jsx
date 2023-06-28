@@ -8,7 +8,7 @@ const TodoListDetail = () => {
   const navigate = useNavigate();
 
   const data = useSelector((state) => {
-    return state.addItem;
+    return state.reducers;
   });
   const foundData = data.find((item) => {
     return item.id === id;

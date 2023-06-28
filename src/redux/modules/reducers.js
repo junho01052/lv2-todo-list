@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
-export const add = 'add';
+export const Add = 'add';
 export const Remove = 'remove';
 export const Change = 'change';
 
-export const Add = (payload) => {
+export const AddItem = (payload) => {
   return {
-    type: add,
+    type: Add,
     payload,
   };
 };
@@ -39,9 +39,9 @@ const initialState = [
   },
 ];
 
-const addItem = (state = initialState, action) => {
+const reducers = (state = initialState, action) => {
   switch (action.type) {
-    case add:
+    case Add:
       return [...state, action.payload];
 
     case Remove:
@@ -59,4 +59,4 @@ const addItem = (state = initialState, action) => {
   }
 };
 
-export default addItem;
+export default reducers;

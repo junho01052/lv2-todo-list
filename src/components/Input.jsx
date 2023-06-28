@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { styled } from 'styled-components';
-import { Add } from '../redux/modules/addItem';
+import { AddItem } from '../redux/modules/reducers';
 
 const Input = () => {
   const [title, setTitle] = useState('');
@@ -26,7 +26,7 @@ const Input = () => {
       body,
       isDone: false,
     };
-    dispatch(Add(newObj));
+    dispatch(AddItem(newObj));
     setTitle('');
     setBody('');
   };

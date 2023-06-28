@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { ChangeItem, RemoveItem } from '../redux/modules/addItem';
+import { ChangeItem, RemoveItem } from '../redux/modules/reducers';
 import { styled } from 'styled-components';
 const TodoItem = ({ e }) => {
   const deleteTodo = (id) => {

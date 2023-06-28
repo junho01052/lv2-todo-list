@@ -1,9 +1,9 @@
 import { createStore } from 'redux';
 import { combineReducers } from 'redux';
-import addItem from '../modules/addItem';
+import reducers from '../modules/reducers';
 
 const rootReducer = combineReducers({
-  addItem,
+  reducers,
 });
 
 const store = createStore(rootReducer);
