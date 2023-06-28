@@ -1,5 +1,4 @@
-export const data = {
-    "todos": [
+const data = [
         {
             id : 1,
             title : "리액트 배우기",
@@ -13,4 +12,5 @@ export const data = {
             isDone : false
         },
     ]
-}
+
+    export default data
