@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { v4 as uuidv4 } from "uuid";
 // const ADD_ITEM = "reducers/ADD_ITEM";
 // const DELETE_ITEM = "reducers/DELETE_ITEM";
 // const UPDATE_ITEM = "reducers/UPDATE_ITEM";
@@ -27,19 +27,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
   {
-    id: 1,
+    id: uuidv4(),
     title: "강의 1-13까지 듣기",
     body: "집중해서 리액트 쿼리까지 듣기",
     isDone: false,
   },
   {
-    id: 2,
+    id: uuidv4(),
     title: "redux-toolkit을 사용해서 Todolist리팩토링하기",
     body: "제목이 곧 내용",
     isDone: false,
   },
   {
-    id: 3,
+    id: uuidv4(),
     title: "react-query를 사용해서 Todolist리팩토링하기",
     body: "제 곧 내",
     isDone: false,
