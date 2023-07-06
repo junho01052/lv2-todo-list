@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 const TodoListDetail = () => {
   const { id } = useParams();
+  console.log(id.trim(""));
 
   const navigate = useNavigate();
 
@@ -11,8 +12,10 @@ const TodoListDetail = () => {
     return state.todos;
   });
 
+  console.log(data);
+
   const foundData = data.find((item) => {
-    return item.id === parseInt(id);
+    return item.id === id.trim("");
   });
 
   return (
