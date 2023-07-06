@@ -1,6 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { createStore } from "redux";
-import { combineReducers } from "redux";
 import todos from "../modules/todos";
 
 // ASIS : 일반 리듀서
